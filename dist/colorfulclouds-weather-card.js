@@ -367,10 +367,6 @@ class WeatherCard extends LitElement {
                         ${this.getUnit("length")}/h
                       </span>
                       <br />
-                      <span class="ha-icon"
-                        ><ha-icon icon="mdi:weather-sunset-up"></ha-icon
-                      ></span>
-                      ${next_rising.toLocaleTimeString()}
                     </li>
                     <li>
                       <span class="ha-icon"
@@ -388,10 +384,6 @@ class WeatherCard extends LitElement {
                         ${this.getUnit("length")}
                       </span>
                       <br />
-                      <span class="ha-icon"
-                        ><ha-icon icon="mdi:weather-sunset-down"></ha-icon
-                      ></span>
-                      ${next_setting.toLocaleTimeString()}
                     </li>
                   </ul>
                 </span>
@@ -407,12 +399,6 @@ class WeatherCard extends LitElement {
                       <span class="dayname"
                         >${this._today(daily.datetime)} </span
                       ><br />
-                      <span class="dayname"
-                        >${new Date(daily.datetime).toLocaleDateString(lang, {
-                          month: "2-digit",
-                          day: "2-digit",
-                        })}</span
-                      >
                       <br /><i
                         class="icon"
                         style="background: none, url(${iconUrl}${daily.skycon}.svg) no-repeat; background-size: contain;"
@@ -430,7 +416,7 @@ class WeatherCard extends LitElement {
                               )}</span
                             >
                             <br /><span class="lowTemp"
-                              >${Math.round(daily.precipitation * 100) /
+                              >降水量${Math.round(daily.precipitation * 100) /
                               100}${this.getUnit("precipitation")}</span
                             >
                           `
@@ -650,6 +636,11 @@ class WeatherCard extends LitElement {
       retext = this._hass.localize(
         "ui.components.date-range-picker.ranges.today"
       );
+    }else{
+      retext=new Date(daily.datetime).toLocaleDateString(lang, {
+                          month: "2-digit",
+                          day: "2-digit",
+                        })
     }
     return retext;
   }
@@ -732,7 +723,7 @@ class WeatherCard extends LitElement {
         }
         ha-card {
           margin: auto;
-          padding: 1em;
+          padding: 1px;
           position: relative;
         }
 
