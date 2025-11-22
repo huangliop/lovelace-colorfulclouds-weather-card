@@ -399,15 +399,11 @@ class WeatherCard extends LitElement {
                       <span class="dayname"
                         >${this._today(daily.datetime)} </span
                       ><br />
-                      <br /><i
-                        class="icon"
-                        style="background: none, url(${iconUrl}${daily.skycon}.svg) no-repeat; background-size: contain;"
-                      ></i>
+                      <i class="icon" style="background: none, url(${iconUrl}${daily.skycon}.svg) no-repeat; background-size: contain;"></i>
                       <br /><span class="highTemp"
                         >${daily.temperature}${this.getUnit(
                           "temperature"
-                        )}</span
-                      >
+                        )}</span>
                       ${typeof daily.templow !== "undefined"
                         ? html`
                             <br /><span class="lowTemp"
