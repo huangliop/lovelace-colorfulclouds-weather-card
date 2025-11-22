@@ -720,7 +720,7 @@ class WeatherCard extends LitElement {
         }
         ha-card {
           margin: auto;
-          padding: 1em;
+          padding: 1px;
           position: relative;
         }
 
@@ -833,7 +833,7 @@ class WeatherCard extends LitElement {
           text-align: center;
           color: var(--primary-text-color);
           border-right: 0.1em solid #d9d9d9;
-          line-height: 2;
+          // line-height: 2;
           box-sizing: border-box;
           padding-bottom: 1em;
         }
