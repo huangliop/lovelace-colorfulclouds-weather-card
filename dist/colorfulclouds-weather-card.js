@@ -366,7 +366,6 @@ class WeatherCard extends LitElement {
                       ${attributes.wind_speed}<span class="unit">
                         ${this.getUnit("length")}/h
                       </span>
-                      <br />
                     </li>
                     <li>
                       <span class="ha-icon"
@@ -383,7 +382,6 @@ class WeatherCard extends LitElement {
                       ${attributes.visibility}<span class="unit">
                         ${this.getUnit("length")}
                       </span>
-                      <br />
                     </li>
                   </ul>
                 </span>
@@ -399,11 +397,21 @@ class WeatherCard extends LitElement {
                       <span class="dayname"
                         >${this._today(daily.datetime)} </span
                       ><br />
-                      <i class="icon" style="background: none, url(${iconUrl}${daily.skycon}.svg) no-repeat; background-size: contain;"></i>
+                      <span class="dayname"
+                        >${new Date(daily.datetime).toLocaleDateString(lang, {
+                          month: "2-digit",
+                          day: "2-digit",
+                        })}</span
+                      >
+                      <br /><i
+                        class="icon"
+                        style="background: none, url(${iconUrl}${daily.skycon}.svg) no-repeat; background-size: contain;"
+                      ></i>
                       <br /><span class="highTemp"
                         >${daily.temperature}${this.getUnit(
                           "temperature"
-                        )}</span>
+                        )}</span
+                      >
                       ${typeof daily.templow !== "undefined"
                         ? html`
                             <br /><span class="lowTemp"
@@ -412,7 +420,7 @@ class WeatherCard extends LitElement {
                               )}</span
                             >
                             <br /><span class="lowTemp"
-                              >降水量${Math.round(daily.precipitation * 100) /
+                              >${Math.round(daily.precipitation * 100) /
                               100}${this.getUnit("precipitation")}</span
                             >
                           `
@@ -632,11 +640,6 @@ class WeatherCard extends LitElement {
       retext = this._hass.localize(
         "ui.components.date-range-picker.ranges.today"
       );
-    }else{
-      retext=new Date(daily.datetime).toLocaleDateString(lang, {
-                          month: "2-digit",
-                          day: "2-digit",
-                        })
     }
     return retext;
   }
@@ -719,7 +722,7 @@ class WeatherCard extends LitElement {
         }
         ha-card {
           margin: auto;
-          padding: 1px;
+          padding: 1em;
           position: relative;
         }
 
