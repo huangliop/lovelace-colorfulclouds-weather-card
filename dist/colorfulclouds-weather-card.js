@@ -634,7 +634,7 @@ class WeatherCard extends LitElement {
         "ui.components.date-range-picker.ranges.today"
       );
     }else{
-     retex= new Date(date).toLocaleDateString(lang, {
+     retext= new Date(date).toLocaleDateString(lang, {
                           month: "2-digit",
                           day: "2-digit",
                         })
